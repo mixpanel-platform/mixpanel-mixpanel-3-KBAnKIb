@@ -56,8 +56,10 @@ stroke-linecap: round;
 <div style="clear: both;"></div>
 
 <script>
-
-var date_params = {};
+        
+MP.api.ready(function() {
+  
+  var date_params = {};
 
  function date_to_string(d) {
     return d.toISOString().split('T')[0];
@@ -67,8 +69,6 @@ function add_date_range_to_params(from, to) {
     date_params.from = date_to_string(from);
     date_params.to = date_to_string(to);
 }
-        
-MP.api.ready(function() {
   
   $('#datePicker').MPDatepicker().on('change', function(e, dates){
       add_date_range_to_params(dates.from, dates.to);
